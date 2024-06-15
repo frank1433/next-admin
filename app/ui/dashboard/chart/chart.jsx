@@ -62,8 +62,8 @@ function Chart() {
           <YAxis />
           <Tooltip contentStyle={{background:"#151c2c", border: "none"}} />
           <Legend />
-          <Line type="monotone" dataKey="visit" stroke="#8884d8" strokeDasharray="5 5" color='orange' />
-          <Line type="monotone" dataKey="click" stroke="#82ca9d" strokeDasharray="3 4 5 2" />
+          <Line type="monotone" dataKey="visit" stroke="#A020F0" strokeDasharray="5 5"  />
+          <Line type="monotone" dataKey="click" stroke="#008000" strokeDasharray="3 4 5 2" />
         </LineChart>
       </ResponsiveContainer>
 
