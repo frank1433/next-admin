@@ -20,8 +20,6 @@ function Search({placeholder}) {
     }
     replace(`${pathName}?${params}`);
   }, 300);
-  console.log(searchParams)
-  console.log(pathName)
   return (
     <div className={styles.container}>
       <MdSearch/>

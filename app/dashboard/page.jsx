@@ -4,20 +4,36 @@ import styles from "../ui/dashboard/dashboard.module.css";
 import Rightbar from "../ui/dashboard/rightbar/rightbar";
 import Transactions from "../ui/dashboard/transactions/transactions";
 import Chart from "../ui/dashboard/chart/chart";
+
+const infos = [
+  {
+    number: 123243,
+    detail: 12,
+  },
+  {
+    number: 823243,
+    detail: -13.2,
+  },
+  {
+    number: 3243,
+    detail: 15.2,
+  },
+];
+
 function Dashboard() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.main}>
         <div className={styles.cards}>
-          <Card />
-          <Card />
-          <Card />
+          {infos.map((info, index) => (
+            <Card key={index} info={info} />
+          ))}
         </div>
-        <Transactions/>
-          <Chart/>
+        <Transactions />
+        <Chart />
       </div>
       <div className={styles.side}>
-        <Rightbar/>
+        <Rightbar />
       </div>
     </div>
   );

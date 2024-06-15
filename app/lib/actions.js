@@ -84,7 +84,6 @@ export const updateProduct = async (formData) =>{
         )
         await Product.findByIdAndUpdate(id, updateFields)
     } catch (error) {
-        console.log(error)
         throw new Error("Failed to update product")
     }
     revalidatePath("/dashboard/products")
@@ -112,7 +111,6 @@ export const deleteUser = async (formData) =>{
         connectToDB();
     await User.findByIdAndDelete(id);
     } catch (error) {
-        console.log(error)
         throw new Error("Failed to delete a user")
     }
     revalidatePath("/dashboard/users")
@@ -143,7 +141,6 @@ export const fetchProduct = async (id) =>{
         console.log(error)
         throw new Error("Failed to fetch a product")
     }
-    // revalidatePath(`/dashboard/user/${id}`)
 }
 
 export const authenticate = async (prevState, formData) => {

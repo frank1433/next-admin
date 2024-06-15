@@ -18,7 +18,6 @@ const login = async (credentials) => {
     );
 
     if (!isPasswordCorrect) throw new Error("Wrong credentials!");
-    console.log(user)
     return user;
   } catch (err) {
     console.log(err);
@@ -40,7 +39,6 @@ export const { signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
-  // ADD ADDITIONAL INFORMATION TO SESSION
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
