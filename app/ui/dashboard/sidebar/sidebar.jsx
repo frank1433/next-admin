@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import MenuLink from "./menuLink/menuLink";
 import styles from "./sidebar.module.css";
+import { auth, signOut } from "@/app/auth";
 import {
   MdDashboard,
   MdSupervisedUserCircle,
@@ -79,19 +80,21 @@ const menuItems = [
   },
 ];
 
-function Sidebar() {
+async function Sidebar() {
+  const {user} = await auth();
+  console.log(user)
   return (
     <div className={styles.container}>
       <div className={styles.user}>
         <Image
           className={styles.userImage}
-          src={"/noavatar.png"}
+          src={user.img || "/noavatar.png" }
           alt="use-pic"
           width="50"
           height="50"
         />
         <div className={styles.userDetail}>
-          <span className={styles.username}>John Doe</span>
+          <span className={styles.username}>{user.username}</span>
           <span className={styles.userTitle}>Admin</span>
         </div>
       </div>
@@ -105,10 +108,19 @@ function Sidebar() {
           </li>
         ))}
       </ul>
-      <button className={styles.logout}>
-        <MdLogout/>
-        Logout
+    
+      <form
+        action={async () => {
+          "use server";
+          await signOut();
+        }}
+      >
+        <button className={styles.logout}>
+          <MdLogout />
+          Logout
         </button>
+      </form>
+    
     </div>
   );
 }
